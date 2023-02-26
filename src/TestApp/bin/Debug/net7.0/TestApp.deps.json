@@ -1,0 +1,57 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "TestApp/1.0.0": {
+        "dependencies": {
+          "CliWrap": "3.6.0",
+          "NuGet.Versioning": "6.4.0"
+        },
+        "runtime": {
+          "TestApp.dll": {}
+        }
+      },
+      "CliWrap/3.6.0": {
+        "runtime": {
+          "lib/netcoreapp3.0/CliWrap.dll": {
+            "assemblyVersion": "3.6.0.0",
+            "fileVersion": "3.6.0.0"
+          }
+        }
+      },
+      "NuGet.Versioning/6.4.0": {
+        "runtime": {
+          "lib/netstandard2.0/NuGet.Versioning.dll": {
+            "assemblyVersion": "6.4.0.123",
+            "fileVersion": "6.4.0.123"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TestApp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CliWrap/3.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-AY6LvRZOEYuAiuaWPLnIDddJUnpiPpiSvfoPwweEXI1orRNnsAwf6sOv9Tt0J4GFrlwejFF/INuR57iEKIh7bw==",
+      "path": "cliwrap/3.6.0",
+      "hashPath": "cliwrap.3.6.0.nupkg.sha512"
+    },
+    "NuGet.Versioning/6.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YE8p3TpX4jIw+Gb24maE8YRDoqWA4imLmCbdOj5IvslLrZJXQ8akeFOGOplxICNVevON1g1SFYT2+cq4yy0nQQ==",
+      "path": "nuget.versioning/6.4.0",
+      "hashPath": "nuget.versioning.6.4.0.nupkg.sha512"
+    }
+  }
+}
