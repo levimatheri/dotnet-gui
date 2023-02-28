@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetGui.Core", "src\Dotne
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetGui.App", "src\DotnetGui.App\DotnetGui.App.csproj", "{F3C29E49-1E43-4010-A59A-3799CC6323F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "src\TestApp\TestApp.csproj", "{33C67958-6076-4CFE-B8F2-25C73705658A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "src\TestApp\TestApp.csproj", "{33C67958-6076-4CFE-B8F2-25C73705658A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +23,7 @@ Global
 		{047D5D98-DA72-4D06-8957-2AD8221D3E1B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F3C29E49-1E43-4010-A59A-3799CC6323F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F3C29E49-1E43-4010-A59A-3799CC6323F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3C29E49-1E43-4010-A59A-3799CC6323F3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{F3C29E49-1E43-4010-A59A-3799CC6323F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3C29E49-1E43-4010-A59A-3799CC6323F3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{33C67958-6076-4CFE-B8F2-25C73705658A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

@@ -12,13 +12,14 @@ internal class BuiltInTemplateProvider : ITemplateProvider
         _dotNetCli = dotNetCli;
     }
 
-    public async Task<IReadOnlyList<string>> GetAllTemplatesAsync(CancellationToken cancellationToken)
+    public async Task<IReadOnlyList<CompositeTemplateManifest>> GetAllTemplatesAsync(CancellationToken cancellationToken)
     {
         var currentInstalledSdk = await GetCurrentSdkInfoAsync(_dotNetCli, cancellationToken).ConfigureAwait(false);
 
         return GetTemplateFolders(currentInstalledSdk)
             .Where(Directory.Exists)
             .SelectMany(folder => Directory.EnumerateFiles(folder, "*.nupkg", SearchOption.TopDirectoryOnly))
+            .SelectMany(path => TemplatePackageInspector.GetTemplateManifestsFromPackage(path, true))
             .ToList();
     }
 

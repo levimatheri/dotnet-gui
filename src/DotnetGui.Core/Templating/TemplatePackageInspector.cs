@@ -4,7 +4,7 @@ using System.IO.Compression;
 using System.Text.Json;
 using static DotnetGui.Core.Common.NuGet.PackageInspector;
 
-namespace TestApp;
+namespace DotnetGui.Core.Templating;
 public static partial class TemplatePackageInspector
 {
     private static readonly JsonSerializerOptions _jsonSerializerOptions = new(JsonSerializerDefaults.Web)

@@ -5,6 +5,7 @@ using DotnetGui.Core.Templating.Models;
 using Microsoft.Extensions.Logging;
 using NuGet.Versioning;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace DotnetGui.Core.Common;
 internal partial class DotNetCli : IDotNetCli
@@ -16,13 +17,13 @@ internal partial class DotNetCli : IDotNetCli
 
     public async Task<IReadOnlyList<InstalledSdk>> ListSdksAsync(CancellationToken cancellationToken = default)
     {
-        var result = await this.RunAsync("--list-sdks").ConfigureAwait(false);
+        var result = await this.RunAsync("--list-sdks", cancellationToken).ConfigureAwait(false);
         return DotNetCliHelper.ParseDotNetListSdksOutput(result.Output.Trim());
     }
 
     public async Task<SemanticVersion> GetSdkVersionAsync(CancellationToken cancellationToken = default)
     {
-        var (Output, _) = await this.RunAsync("--version").ConfigureAwait(false);
+        var (Output, _) = await this.RunAsync("--version", cancellationToken).ConfigureAwait(false);
         return SemanticVersion.Parse(Output.Trim());
     }
 
@@ -56,22 +57,19 @@ internal partial class DotNetCli : IDotNetCli
         private static partial Regex DotnetListSdkRegex();
     }
 
-    private async Task<(string Output, string Error)> RunAsync(string arguments)
+    private async Task<(string Output, string Error)> RunAsync(string arguments, CancellationToken cancellationToken = default)
     {
         try
         {
-            using var cts = new CancellationTokenSource(30_000);
-            {
-                var result = await Cli.Wrap(DOTNET_EXECUTABLE_NAME)
+            var result = await Cli.Wrap(DOTNET_EXECUTABLE_NAME)
                     .WithArguments("--list-sdks")
-                    .ExecuteBufferedAsync();
+                    .ExecuteBufferedAsync(cancellationToken);
 
-                var output = result.StandardOutput;
-                var error = result.StandardError;
+            var output = result.StandardOutput;
+            var error = result.StandardError;
 
-                _logger.ExecutedSuccessfully(DOTNET_EXECUTABLE_NAME, arguments, output, error);
-                return (output, error);
-            }
+            _logger.ExecutedSuccessfully(DOTNET_EXECUTABLE_NAME, arguments, output, error);
+            return (output, error);
         }
         catch (Exception exception)
         {

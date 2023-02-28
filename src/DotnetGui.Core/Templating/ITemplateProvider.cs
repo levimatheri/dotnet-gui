@@ -1,5 +1,7 @@
-﻿namespace DotnetGui.Core.Templating;
+﻿using DotnetGui.Core.Templating.Models;
+
+namespace DotnetGui.Core.Templating;
 internal interface ITemplateProvider
 {
-    public Task<IReadOnlyList<string>> GetAllTemplatesAsync(CancellationToken cancellationToken);
+    public Task<IReadOnlyList<CompositeTemplateManifest>> GetAllTemplatesAsync(CancellationToken cancellationToken);
 }
